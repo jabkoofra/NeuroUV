@@ -1,0 +1,26 @@
+#include "ros/ros.h"
+#include "controlvehicle/ardu_imu.h"
+#include "MadgwickAHRS/MadgwickAHRS.h"
+
+
+void sensorsCallback(const controlvehicle::ardu_imu& imuValues)
+{
+    ROS_INFO("Hello world");
+
+}
+
+
+int main(int argc, char **argv)
+{
+   //Ros node initialization
+   ros::init(argc, argv, "imu_sensors");
+   ros::NodeHandle n;
+
+   //Ros Subscriber initialization
+   ros::Subscriber sub = n.subscribe("imu", 200, sensorsCallback);
+
+
+   ros::spin();
+   return 0;
+
+}
